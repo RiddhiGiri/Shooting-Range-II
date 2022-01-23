@@ -42,7 +42,9 @@ function setup() {
   heading= createElement("h1");
   scoreboard= createElement("h1");
 
-
+gameOver=createSprite(400,400)
+gameOver.addImage(gameOverImg)
+gameOver.visible=false
 }
 
 function draw() {
@@ -86,10 +88,14 @@ function draw() {
       handleBubbleCollision(redBubbleGroup);
     }
 
-    drawSprites();
-  }
     
-  
+  }
+    else{
+      gameOver.visible=true
+     blueBubbleGroup.destroyEach()
+     redBubbleGroup.destroyEach()
+    }
+  drawSprites();
 }
 
 function drawblueBubble(){
@@ -151,7 +157,7 @@ function handleGameover(bubbleGroup){
 
     if (life === 0) {
       gameState=2
-      
+      gameOver.visible=true
      
     }
   
